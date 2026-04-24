@@ -35,6 +35,10 @@ object RequestSpecFactory {
             .setAccept(ContentType.JSON)
             .addFilter(AllureRestAssured())
 
+        if (petstoreConfig.relaxedHttps()) {
+            builder.setRelaxedHTTPSValidation()
+        }
+
         if (petstoreConfig.logRequestResponse()) {
             builder.addFilter(RequestLoggingFilter())
             builder.addFilter(ResponseLoggingFilter())
